@@ -3,12 +3,14 @@
 # Enter arrival time, travel duration, plus shower and meal options
 import datetime
 
+
 # standard durations
 shower = datetime.timedelta(minutes=30)
 lunch = datetime.timedelta(minutes=35)
 buffer = datetime.timedelta(minutes=10)
 gettingReadyTime = datetime.timedelta(minutes=30)
 wakingUpTime = datetime.timedelta(minutes=30)
+
 
 # input: arrival time, travel duration
 def time_input(t):
@@ -27,24 +29,34 @@ def duration_input(d):
     return z
 
 
-eventStart = input(f'Event start time: ')
+print('Event start time: ')
+eventStart = input()
 eventStart = time_input(eventStart)
 
-travelDuration = input(f'How long it takes to get there: ')
+
+print('How long it takes to get there: ')
+travelDuration = input()
 travelDuration = duration_input(travelDuration)
+
 
 timeToLeave = eventStart - travelDuration - buffer
 timeToGetUp = timeToLeave - gettingReadyTime
 
-showerQuestion = input(f'Shower? ')
+
+print('Shower? ')
+showerQuestion = input()
 if showerQuestion == 'y':
     timeToGetUp = timeToGetUp - shower
 
-lunchQuestion = input(f'Lunch? ')
+
+print('Lunch? ')
+lunchQuestion = input()
 if lunchQuestion == 'y':
     timeToGetUp = timeToGetUp - lunch
 
+
 alarmSet = timeToGetUp - wakingUpTime
+
 
 print('Departure time: ' + time_output(timeToLeave) +
       '\nTime to get up: ' + time_output(timeToGetUp) +
